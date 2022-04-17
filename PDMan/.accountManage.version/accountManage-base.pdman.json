@@ -1,0 +1,853 @@
+{
+  "modules": [
+    {
+      "name": "account",
+      "chnname": "账号模块",
+      "entities": [
+        {
+          "title": "account",
+          "fields": [
+            {
+              "name": "id",
+              "type": "IdOrKey",
+              "remark": "主键唯一标识",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "created_time",
+              "type": "Timestamp",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp"
+            },
+            {
+              "name": "updated_time",
+              "type": "Timestamp",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp on update current_timestamp"
+            },
+            {
+              "name": "is_deleted",
+              "type": "YesNo",
+              "remark": "0-未删除 1-已删除",
+              "chnname": "是否删除",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "name",
+              "type": "DefaultString",
+              "remark": "用户名",
+              "chnname": "用户",
+              "notNull": false
+            },
+            {
+              "name": "account",
+              "type": "ShortString",
+              "remark": "账号",
+              "chnname": "账号",
+              "notNull": true
+            },
+            {
+              "name": "password",
+              "type": "ShortString",
+              "remark": "密码",
+              "chnname": "密码",
+              "notNull": true
+            },
+            {
+              "name": "object",
+              "type": "YesNo",
+              "remark": "1-系统账号 2-服务器账号",
+              "chnname": "对象",
+              "notNull": true
+            },
+            {
+              "name": "object_id",
+              "type": "IdOrKey",
+              "remark": "即系统和服务器主键,表示该账号是哪里的登录账号(可以为空,即账号是本系统的登录账号)",
+              "chnname": "对象id",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "账号",
+          "remark": "存储系统和服务器的账号信息"
+        },
+        {
+          "title": "user",
+          "fields": [
+            {
+              "name": "id",
+              "type": "IdOrKey",
+              "remark": "主键唯一标识",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "created_time",
+              "type": "Timestamp",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp"
+            },
+            {
+              "name": "updated_time",
+              "type": "Timestamp",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp on update current_timestamp"
+            },
+            {
+              "name": "is_deleted",
+              "type": "YesNo",
+              "remark": "0-未删除 1-已删除",
+              "chnname": "是否删除",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "用户名"
+            },
+            {
+              "name": "account",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "账号",
+              "notNull": true
+            },
+            {
+              "name": "password",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "密码",
+              "notNull": true
+            },
+            {
+              "name": "salt",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "加密盐",
+              "notNull": true
+            },
+            {
+              "name": "role",
+              "type": "YesNo",
+              "remark": "1-超级管理员 2-普通用户",
+              "chnname": "用户角色",
+              "notNull": true,
+              "defaultValue": "2"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户",
+          "remark": "存储本系统的用户登录信息"
+        },
+        {
+          "title": "user_session",
+          "fields": [
+            {
+              "name": "id",
+              "type": "IdOrKey",
+              "remark": "自增主键",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "created_time",
+              "type": "Timestamp",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp"
+            },
+            {
+              "name": "updated_time",
+              "type": "Timestamp",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "defaultValue": "current_timestamp on update current_timestamp(0)",
+              "notNull": true
+            },
+            {
+              "name": "is_deleted",
+              "type": "YesNo",
+              "remark": "0-未删除 1-已删除",
+              "chnname": "是否删除",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "user_id",
+              "type": "IdOrKey",
+              "remark": "对应user表id",
+              "chnname": "用户ID",
+              "notNull": true
+            },
+            {
+              "name": "session_id",
+              "type": "Uuid",
+              "remark": "用于表示session",
+              "chnname": "sessionID",
+              "notNull": true
+            },
+            {
+              "name": "expires_in",
+              "type": "BigInt",
+              "remark": "单位s，0表示永久有效",
+              "chnname": "session有效时间",
+              "notNull": true
+            },
+            {
+              "name": "expires_time",
+              "type": "BigInt",
+              "remark": "0表示永久有效，否则为session过期时间",
+              "chnname": "session过期时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户session表",
+          "remark": "用户退出登陆或者session过期，则对应记录标记为已删除"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "system",
+      "chnname": "系统模块",
+      "entities": [
+        {
+          "title": "system",
+          "fields": [
+            {
+              "name": "id",
+              "type": "IdOrKey",
+              "remark": "主键唯一标识",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "created_time",
+              "type": "Timestamp",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp"
+            },
+            {
+              "name": "updated_time",
+              "type": "Timestamp",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp on update current_timestamp"
+            },
+            {
+              "name": "is_deleted",
+              "type": "YesNo",
+              "remark": "0-未删除 1-已删除",
+              "chnname": "是否删除",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "name",
+              "type": "DefaultString",
+              "remark": "系统名称",
+              "chnname": "系统名称",
+              "notNull": true
+            },
+            {
+              "name": "address",
+              "type": "ShortString",
+              "remark": "系统访问地址",
+              "chnname": "访问地址",
+              "notNull": true
+            },
+            {
+              "name": "introduction",
+              "type": "LongString",
+              "remark": "系统介绍",
+              "chnname": "系统介绍"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "系统信息",
+          "remark": "存储系统信息"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "server",
+      "chnname": "服务器",
+      "entities": [
+        {
+          "title": "server",
+          "fields": [
+            {
+              "name": "id",
+              "type": "IdOrKey",
+              "remark": "主键唯一标识",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "created_time",
+              "type": "Timestamp",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp"
+            },
+            {
+              "name": "updated_time",
+              "type": "Timestamp",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp on update current_timestamp"
+            },
+            {
+              "name": "is_deleted",
+              "type": "YesNo",
+              "remark": "0-未删除 1-已删除",
+              "chnname": "是否删除",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "name",
+              "type": "DefaultString",
+              "remark": "服务器名称",
+              "chnname": "服务器名称"
+            },
+            {
+              "name": "address",
+              "type": "ShortString",
+              "remark": "服务器地址",
+              "chnname": "服务器地址",
+              "notNull": true
+            },
+            {
+              "name": "introduction",
+              "type": "LongString",
+              "remark": "服务器介绍",
+              "chnname": "服务器介绍"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "服务器信息",
+          "remark": "存储服务器地址信息"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "log",
+      "chnname": "日志模块",
+      "entities": [
+        {
+          "title": "log",
+          "fields": [
+            {
+              "name": "id",
+              "type": "IdOrKey",
+              "remark": "主键唯一标识",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "created_time",
+              "type": "Timestamp",
+              "remark": "创建时间(提交时间)",
+              "chnname": "创建时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp"
+            },
+            {
+              "name": "updated_time",
+              "type": "Timestamp",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp on update current_timestamp"
+            },
+            {
+              "name": "is_deleted",
+              "type": "YesNo",
+              "remark": "0-未删除 1-已删除",
+              "chnname": "是否删除",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "operate",
+              "type": "YesNo",
+              "remark": "1-增加 2-删除 3-修改",
+              "chnname": "操作",
+              "notNull": true
+            },
+            {
+              "name": "object",
+              "type": "YesNo",
+              "remark": "1-系统 2-服务器 表示此次操作对应的是系统or服务器",
+              "chnname": "对象"
+            },
+            {
+              "name": "object_id",
+              "type": "IdOrKey",
+              "remark": "表示此次操作对应的对象id",
+              "chnname": "对象id",
+              "notNull": true
+            },
+            {
+              "name": "content",
+              "type": "String1024",
+              "remark": "把对象,提交前后这些内容在后端拼接成一个字符串再存入数据库",
+              "chnname": "内容"
+            },
+            {
+              "name": "user_id",
+              "type": "IdOrKey",
+              "remark": "即本系统账号的主键",
+              "chnname": "提交者",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "日志信息"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "relevance",
+      "chnname": "关联模块",
+      "entities": [
+        {
+          "title": "system_server",
+          "fields": [
+            {
+              "name": "id",
+              "type": "IdOrKey",
+              "remark": "主键唯一标识",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "created_time",
+              "type": "Timestamp",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp"
+            },
+            {
+              "name": "updated_time",
+              "type": "Timestamp",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "notNull": true,
+              "defaultValue": "current_timestamp on update current_timestamp"
+            },
+            {
+              "name": "is_deleted",
+              "type": "YesNo",
+              "remark": "0-未删除 1-已删除",
+              "chnname": "是否删除",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "system_id",
+              "type": "IdOrKey",
+              "remark": "系统主键",
+              "chnname": "系统主键",
+              "notNull": true
+            },
+            {
+              "name": "server_id",
+              "type": "IdOrKey",
+              "remark": "服务器主键",
+              "chnname": "服务器主键",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "系统服务器关系表",
+          "remark": "存储系统和服务器的多对多关系"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    }
+  ],
+  "version": "v1",
+  "message": "初始化",
+  "date": "2022/4/16 3:4:4"
+}
