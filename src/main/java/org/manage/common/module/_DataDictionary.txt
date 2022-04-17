@@ -1,0 +1,97 @@
+Table: account
+--------------+---------------------+------+-----+-------------------+---------
+ Field        | Type                | Null | Key | Default           | Remarks 
+--------------+---------------------+------+-----+-------------------+---------
+ id           | BIGINT UNSIGNED(20) | NO   | PRI |                   | 主键 主键唯一标识
+ created_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 创建时间 创建时间
+ updated_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 更新时间 更新时间
+ is_deleted   | TINYINT UNSIGNED(3) | NO   |     | 0                 | 是否删除 0-未删除 1-已删除
+ name         | VARCHAR(20)         | YES  |     |                   | 用户 用户名  
+ account      | VARCHAR(50)         | NO   |     |                   | 账号 账号   
+ password     | VARCHAR(50)         | NO   |     |                   | 密码 密码   
+ object       | TINYINT UNSIGNED(3) | NO   |     |                   | 对象 1-系统账号 2-服务器账号
+ object_id    | BIGINT UNSIGNED(20) | NO   |     |                   | 对象id 即系统和服务器主键,表示该账号是哪里的登录账号(可以为空,即账号是本系统的登录账号)
+--------------+---------------------+------+-----+-------------------+---------
+
+Table: log
+--------------+---------------------+------+-----+-------------------+---------
+ Field        | Type                | Null | Key | Default           | Remarks 
+--------------+---------------------+------+-----+-------------------+---------
+ id           | BIGINT UNSIGNED(20) | NO   | PRI |                   | 主键 主键唯一标识
+ created_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 创建时间 创建时间(提交时间)
+ updated_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 更新时间 更新时间
+ is_deleted   | TINYINT UNSIGNED(3) | NO   |     | 0                 | 是否删除 0-未删除 1-已删除
+ operate      | TINYINT UNSIGNED(3) | NO   |     |                   | 操作 1-增加 2-删除 3-修改
+ object       | TINYINT UNSIGNED(3) | YES  |     |                   | 对象 1-系统 2-服务器 表示此次操作对应的是系统or服务器
+ object_id    | BIGINT UNSIGNED(20) | NO   |     |                   | 对象id 表示此次操作对应的对象id
+ content      | VARCHAR(1024)       | YES  |     |                   | 内容 把对象,提交前后这些内容在后端拼接成一个字符串再存入数据库
+ user_id      | BIGINT UNSIGNED(20) | NO   |     |                   | 提交者 即本系统账号的主键
+--------------+---------------------+------+-----+-------------------+---------
+
+Table: server
+--------------+---------------------+------+-----+-------------------+---------
+ Field        | Type                | Null | Key | Default           | Remarks 
+--------------+---------------------+------+-----+-------------------+---------
+ id           | BIGINT UNSIGNED(20) | NO   | PRI |                   | 主键 主键唯一标识
+ created_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 创建时间 创建时间
+ updated_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 更新时间 更新时间
+ is_deleted   | TINYINT UNSIGNED(3) | NO   |     | 0                 | 是否删除 0-未删除 1-已删除
+ name         | VARCHAR(20)         | YES  |     |                   | 服务器名称 服务器名称
+ address      | VARCHAR(50)         | NO   |     |                   | 服务器地址 服务器地址
+ introduction | VARCHAR(255)        | YES  |     |                   | 服务器介绍 服务器介绍
+--------------+---------------------+------+-----+-------------------+---------
+
+Table: system
+--------------+---------------------+------+-----+-------------------+---------
+ Field        | Type                | Null | Key | Default           | Remarks 
+--------------+---------------------+------+-----+-------------------+---------
+ id           | BIGINT UNSIGNED(20) | NO   | PRI |                   | 主键 主键唯一标识
+ created_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 创建时间 创建时间
+ updated_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 更新时间 更新时间
+ is_deleted   | TINYINT UNSIGNED(3) | NO   |     | 0                 | 是否删除 0-未删除 1-已删除
+ name         | VARCHAR(20)         | NO   |     |                   | 系统名称 系统名称
+ address      | VARCHAR(50)         | NO   |     |                   | 访问地址 系统访问地址
+ introduction | VARCHAR(255)        | YES  |     |                   | 系统介绍 系统介绍
+--------------+---------------------+------+-----+-------------------+---------
+
+Table: system_server
+--------------+---------------------+------+-----+-------------------+---------
+ Field        | Type                | Null | Key | Default           | Remarks 
+--------------+---------------------+------+-----+-------------------+---------
+ id           | BIGINT UNSIGNED(20) | NO   | PRI |                   | 主键 主键唯一标识
+ created_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 创建时间 创建时间
+ updated_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 更新时间 更新时间
+ is_deleted   | TINYINT UNSIGNED(3) | NO   |     | 0                 | 是否删除 0-未删除 1-已删除
+ system_id    | BIGINT UNSIGNED(20) | NO   |     |                   | 系统主键 系统主键
+ server_id    | BIGINT UNSIGNED(20) | NO   |     |                   | 服务器主键 服务器主键
+--------------+---------------------+------+-----+-------------------+---------
+
+Table: user
+--------------+---------------------+------+-----+-------------------+---------
+ Field        | Type                | Null | Key | Default           | Remarks 
+--------------+---------------------+------+-----+-------------------+---------
+ id           | BIGINT UNSIGNED(20) | NO   | PRI |                   | 主键 主键唯一标识
+ created_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 创建时间 创建时间
+ updated_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 更新时间 更新时间
+ is_deleted   | TINYINT UNSIGNED(3) | NO   |     | 0                 | 是否删除 0-未删除 1-已删除
+ name         | VARCHAR(20)         | YES  |     |                   | 用户名     
+ account      | VARCHAR(50)         | NO   |     |                   | 账号      
+ password     | VARCHAR(128)        | NO   |     |                   | 密码      
+ salt         | VARCHAR(128)        | NO   |     |                   | 加密盐     
+ role         | TINYINT UNSIGNED(3) | NO   |     | 2                 | 用户角色 1-超级管理员 2-普通用户
+--------------+---------------------+------+-----+-------------------+---------
+
+Table: user_session
+--------------+---------------------+------+-----+-------------------+---------
+ Field        | Type                | Null | Key | Default           | Remarks 
+--------------+---------------------+------+-----+-------------------+---------
+ id           | BIGINT UNSIGNED(20) | NO   | PRI |                   | 主键 自增主键 
+ created_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 创建时间 创建时间
+ updated_time | TIMESTAMP(19)       | NO   |     | CURRENT_TIMESTAMP | 更新时间 更新时间
+ is_deleted   | TINYINT UNSIGNED(3) | NO   |     | 0                 | 是否删除 0-未删除 1-已删除
+ user_id      | BIGINT UNSIGNED(20) | NO   |     |                   | 用户ID 对应user表id
+ session_id   | VARCHAR(32)         | NO   |     |                   | sessionID 用于表示session
+ expires_in   | BIGINT(19)          | NO   |     |                   | session有效时间 单位s，0表示永久有效
+ expires_time | BIGINT(19)          | YES  |     |                   | session过期时间 0表示永久有效，否则为session过期时间
+--------------+---------------------+------+-----+-------------------+---------
+
